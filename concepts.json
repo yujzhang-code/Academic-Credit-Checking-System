@@ -1,0 +1,28 @@
+{
+  "mentor_vs_advisor": {
+    "keywords": ["導師", "指導教授", "mentor", "advisor","mantor","thesis supervisor","supervisor","thesis advisor", "論文指導教授","論文指導老師"],
+    "answer_zh": "導師（Mentor）負責學習輔助，指導教授（Advisor）負責論文及研究指導，兩者可能不同。如果需要確認您的導師是誰，請填寫google 表單: https://forms.gle/mcSMskAWNcDgSzJN7， 並查看您的電子郵件以獲取結果。",
+    "answer_en": "A mentor handles coursework guidance, while an advisor supervises your thesis and research. They may be different people. If you need to confirm who is your mentor, please fill out the form  at  https://forms.gle/mcSMskAWNcDgSzJN7, and check your email for the result."
+  },
+  "seminar_rule": {
+    "keywords": ["seminar", "任課老師","seminar course", "seminar class", "seminar professor","seminar instructor", "seminar teacher", "seminar 老師", "專題導論課","專討","seminar的老師","seminar的任課老師","saminar","semina","semenar","samenar"],
+    "answer_zh": "Seminar課程(專題討論課程)應選擇mentor(導師)，而不是advisor(指導教授)。",
+    "answer_en": "For seminar courses, you should select your mentor, not your advisor."
+  },
+  "問題類型的key": {
+    "keywords": ["觸發這個回答的關鍵字"],
+    "answer_zh": "中文回答",
+    "answer_en": "英文回答"
+  },
+  "oral_defense_documents": {
+  "keywords": ["考口試","申請口試", "申請文件","take the oral defense", "apply for the oral defense", "documents", "application documents"],
+  "answer_zh": "口試申請所需文件依碩士班與博士班而不同，請至以下連結查看詳細清單：\n• 碩士班：[https://iob.ntu.edu.tw/xhr/archive/download?file=689073ff1d41c86c3bd76683]\n• 博士班：[https://iob.ntu.edu.tw/xhr/archive/download?file=68907a6a1d41c86c3bd766f4]\n如有疑問請洽系所辦公室。",
+  "answer_en": "Required documents for oral defense application differ between Master's and PhD programs. Please refer to the following links:\n• Master's Program: [https://iob.ntu.edu.tw/xhr/archive/download?file=689076221d41c86c3bd766a2]\n• PhD Program: [https://iob.ntu.edu.tw/xhr/archive/download?file=689082ac1d41c86c3bd76756]\nFor further questions, please contact the department office."
+  },
+  "course_selection": {
+    "keywords": ["選課", "course selection","course list", "credites required","choose the courses","choose my courses"],
+    "answer_zh": "有關本所碩班必選修課程之公告，請至連結查詢:\n• 碩士班： [https://iob.ntu.edu.tw/zh_tw/student/marule/?wiki=23740613 ]\n• 博士班：[https://iob.ntu.edu.tw/zh_tw/student/phdrule]，選課相關資訊請參考以下連結：\n• 學校選課相關資訊：[https://www.aca.ntu.edu.tw/w/aca/UAADForms?typeId=21071415501471930] \n• 如有疑問請洽系所辦公室。",
+    "answer_en": "For course selection information, please refer to the following links:\n• Master's Program:[https://iob.ntu.edu.tw/xhr/archive/download?file=6894215b1d41c86c3bd77763]\n• PhD Program: [https://iob.ntu.edu.tw/en/student/phdrule]\n• Course Selection Guidelines: [https://www.aca.ntu.edu.tw/w/acaEN/UAADForms?typeId=21082621163543472]\nFor further questions, please contact the department office."
+  }
+
+}

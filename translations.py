@@ -1,0 +1,153 @@
+# translations.py — 翻譯字典與輔助函數
+
+T = {
+    # 系統基本資訊
+    "page_title":       {"zh": "研究所畢業及考試申請資格查詢系統", "en": "Graduate and Examination Eligibility Check System"},
+    "dept_name":        {"zh": "國立臺灣大學 生物科技研究所", "en": "Institute of Biotechnology, National Taiwan University"},
+    "system_note":      {"zh": "⚠️ 本系統依據同學自行輸入之資料進行初步檢核，最終資格仍以系所辦公室審核為準。如有疑問請洽系所辦公室。",
+                         "en": "⚠️ This report is based on self-reported data and is for reference only. Final qualification is subject to official review by the department office."},
+    # Step 1
+    "step1_title":      {"zh": "Step 1｜請輸入您的學號", "en": "Step 1 | Enter Your Student ID"},
+    "step1_input":      {"zh": "學號（碩士生：R開頭　博士生：D開頭）", "en": "Student ID (Master's: starts with R   PhD: starts with D)"},
+    "step1_placeholder":{"zh": "例如 R12345678", "en": "e.g. R12345678"},
+    "step1_next":       {"zh": "下一步 →", "en": "Next →"},
+    "step1_error":      {"zh": "⚠️ 學號格式錯誤：碩士生請以 R 開頭，博士生請以 D 開頭。", "en": "⚠️ Invalid Student ID format. Master's students should start with R; PhD students with D."},
+    # Step 2
+    "step2_title":      {"zh": "Step 2｜請選擇查詢項目", "en": "Step 2 | Select Query Type"},
+    "step2_info":       {"zh": "學號", "en": "Student ID"},
+    "step2_identity":   {"zh": "身份", "en": "Program"},
+    "master":           {"zh": "碩士班", "en": "Master's Program"},
+    "phd":              {"zh": "博士班", "en": "PhD Program"},
+    "back":             {"zh": "← 上一步", "en": "← Back"},
+    "start_btn":        {"zh": "點我開始查詢／檢核 ▶", "en": "Start Check ▶"},
+    # 查詢類型
+    "m_oral":           {"zh": "申請碩士學位考口試資格", "en": "Master's Thesis Oral Defense Eligibility"},
+    "m_grad":           {"zh": "碩士班畢業門檻總覽", "en": "Master's Graduation Requirements Overview"},
+    "phd_qual":         {"zh": "博士資格考申請資格", "en": "PhD Qualifying Examination Eligibility"},
+    "phd_oral":         {"zh": "申請博士學位考口試資格", "en": "PhD Dissertation Oral Defense Eligibility"},
+    # Step 3
+    "step3_title":      {"zh": "Step 3｜請依成績單輸入已通過課程", "en": "Step 3 | Enter Completed Courses from Transcript"},
+    "step3_note":       {"zh": "請輸入成績單上已通過（及格）的課程。選修請輸入學分數即可。",
+                         "en": "Please enter courses you have passed on your transcript. For electives, enter the total credits."},
+    "required_sec":     {"zh": "📌 必修課程", "en": "📌 Required Courses"},
+    "elective_sec":     {"zh": "📌 選修課程", "en": "📌 Elective Courses"},
+    "english_sec":      {"zh": "🌐 英文能力", "en": "🌐 English Proficiency"},
+    "check_btn":        {"zh": "🔍 開始檢核", "en": "🔍 Start Check"},
+    "restart_btn":      {"zh": "← 重新選擇查詢項目", "en": "← Back to Query Selection"},
+    "download_btn":     {"zh": "📄 下載檢核報告（PDF）", "en": "📄 Download Check Report (PDF)"},
+    # 碩士課程
+    "seminar":          {"zh": "642 D0100 專題討論", "en": "642 D0100 Seminar"},
+    "seminar_note":     {"zh": "在學期間必修（含畢業當學期），計入畢業學分最多 4 學分", "en": "Required every semester (including graduation semester); max 4 credits counted toward graduation"},
+    "seminar_note2":    {"zh": "專題討論課請選擇您的導師為任課老師", "en": "Please select your mentor as your instructor for the Seminar course"},
+    "core_lab":         {"zh": "生物技術核心實驗（4學分）— 成績達 B- 以上？", "en": "Biotechnology Core Techniques (4 credits) — Grade B- or above?"},
+    "core_lab_yes":     {"zh": "是", "en": "Yes"},
+    "core_lab_no":      {"zh": "否（尚未修習或未達標準）", "en": "No (not completed or below B-)"},
+    "core_lab_ugrad":   {"zh": "大學部已修過（成績達 B-），以本所 U/M/D 字頭選修替代", "en": "Completed in undergraduate (grade B- or above); substitute with U/M/D courses"},
+    "core_lab_help":    {"zh": "大學部修過且成績達B-，可申請以本所U/M/D字頭選修課抵免", "en": "If completed in undergraduate with B- or above, you may apply to substitute with U/M/D electives"},
+    "mgmt_label":       {"zh": "必選修課程（二選一）", "en": "Required Elective Course (choose one of the two)"},
+    "mgmt_m0140":       {"zh": "642 M0140 生物科技管理與產業分析（2學分）✅ 正常開設", "en": "642 M0140 Management and Analysis in the Biotechnology Industry (2 credits) ✅ Available"},
+    "mgmt_u0130":       {"zh": "642 U0130 尖端生技邁向新興產業專論（2學分）⚠️ 近期暫停開設", "en": "642 U0130 Introduction of The Cutting Edge Biotechnology (2 credits) ⚠️ Currently not offered"},
+    "mgmt_none":        {"zh": "尚未修習", "en": "Not yet completed"},
+    "mgmt_warn":        {"zh": "⚠️ 642 U0130「尖端生技邁向新興產業專論」近期暫停開設，請洽系所辦公室確認最新開課狀況。",
+                         "en": "⚠️ 642 U0130 'Introduction of The Cutting Edge Biotechnology' is currently not being offered. Please confirm with the department office."},
+    "dept_req_label":   {"zh": "已取得本所 M 或 D 字頭必修課程學分數", "en": "Completed M or D prefix required courses credits"},
+    "elective_label":   {"zh": "已取得選修學分數（本校 U、M、D 字頭課程；專題討論最多認列 2 學分）", "en": "Completed elective credits (NTU U/M/D prefix courses; Seminar max 2 credits counted)"},
+    "thesis_label":     {"zh": "642 M0010 碩士論文 Dissertation (M) — 已於申請學位考當學期選修？", "en": "642 M0010 Dissertation (M) — Enrolled in the semester of oral defense application?"},
+    "thesis_note":      {"zh": "申請學位考口試當學期須選修碩士論文（不計畢業學分）", "en": "Must be enrolled in Dissertation (M) during the semester of oral defense application (not counted toward graduation credits)"},
+    # 英文能力（碩士）
+    "eng_method":       {"zh": "英文能力認證方式", "en": "English Proficiency Certification Method"},
+    "eng_cet_m":        {"zh": "全民英檢中高級初試（通過）", "en": "GEPT High-Intermediate Preliminary Test (Passed)"},
+    "eng_toefl":        {"zh": "TOEFL-iBT", "en": "TOEFL-iBT"},
+    "eng_ielts":        {"zh": "IELTS 雅思", "en": "IELTS"},
+    "eng_flpt":         {"zh": "FLPT 外語能力測驗（各分項≥70）", "en": "FLPT (Each section ≥ 70)"},
+    "eng_fce":          {"zh": "劍橋 FCE", "en": "Cambridge FCE"},
+    "eng_toeic":        {"zh": "TOEIC 新多益", "en": "TOEIC"},
+    "eng_degree":       {"zh": "英語系國家大學（含）以上學位", "en": "Degree from an English-speaking country university"},
+    "eng_online":       {"zh": "已修畢研究生線上英文二（Adveng7002）以上", "en": "Completed Graduate Online English II (Adveng7002) or above"},
+    "eng_none":         {"zh": "尚未取得", "en": "Not yet obtained"},
+    "eng_score_toefl":  {"zh": "TOEFL-iBT 分數（需≥72）", "en": "TOEFL-iBT Score (required ≥ 72)"},
+    "eng_score_ielts":  {"zh": "IELTS 分數（需≥6.0）", "en": "IELTS Score (required ≥ 6.0)"},
+    "eng_score_flpt":   {"zh": "FLPT 各分項最低分（需各項≥70）", "en": "FLPT lowest section score (each section required ≥ 70)"},
+    "eng_grade_fce":    {"zh": "FCE 等級（需 B2 以上）", "en": "FCE Grade (required B2 or above)"},
+    "eng_score_toeic":  {"zh": "TOEIC 分數（需≥785）", "en": "TOEIC Score (required ≥ 785)"},
+    # 英文能力（博士）
+    "eng_cet_phd":      {"zh": "全民英檢中高級複試（通過）", "en": "GEPT High-Intermediate Final Test (Passed)"},
+    "eng_toefl_phd":    {"zh": "TOEFL-iBT（需≥87）", "en": "TOEFL-iBT (required ≥ 87)"},
+    "eng_ielts_phd":    {"zh": "IELTS 雅思（需≥6.5）", "en": "IELTS (required ≥ 6.5)"},
+    "eng_flpt_phd":     {"zh": "FLPT 三項總分（需≥240）＋口試 S-2+", "en": "FLPT Total Score (≥ 240) + Oral S-2+"},
+    "eng_fce_phd":      {"zh": "劍橋 FCE（需 C1 以上）", "en": "Cambridge FCE (required C1 or above)"},
+    "eng_toeic_phd":    {"zh": "TOEIC（需≥785）＋ TOEIC SW 總分（需≥240）", "en": "TOEIC (≥ 785) + TOEIC SW Total Score (≥ 240)"},
+    "eng_flpt_total":   {"zh": "FLPT 三項總分（需≥240）", "en": "FLPT Total Score (required ≥ 240)"},
+    "eng_flpt_oral":    {"zh": "FLPT 口試等級（需 S-2+）", "en": "FLPT Oral Level (required S-2+)"},
+    "eng_fce_grade_phd":{"zh": "FCE 等級（需 C1 以上）", "en": "FCE Grade (required C1 or above)"},
+    "eng_toeic_score":  {"zh": "TOEIC 分數（需≥785）", "en": "TOEIC Score (required ≥ 785)"},
+    "eng_toeic_sw":     {"zh": "TOEIC SW 總分（需≥240）", "en": "TOEIC SW Total Score (required ≥ 240)"},
+    # 博士課程
+    "phd_dissertation": {"zh": "642 D0010 博士論文（0學分）— 在學期間必修，申請學位考當學期必選", "en": "642 D0010 Dissertation (Ph.D.) (0 credits) — Required every semester; enroll in graduation semester"},
+    "phd_topics":       {"zh": "642 D0090 專題研究（1學分）— 在學期間必修，不計入畢業學分", "en": "642 D0090 Topics Research / Special Topics in Library Science (1 credit) — Required; not counted toward graduation"},
+    "phd_seminar":      {"zh": "642 D0100 專題討論（1學分）— 計入畢業學分數，在學期間必修", "en": "642 D0100 Seminar (1 credit) — Counts toward graduation; required every semester"},
+    "phd_adv1":         {"zh": "642 D0210 高等生物科技特論（一）（3學分）— 博士班一年級必修，共計6學分", "en": "642 D0210 Selected Topics in Advanced Biotechnology (I) (3 credits) — 1st year PhD required; 6 credits total"},
+    "phd_adv2":         {"zh": "642 D0220 高等生物科技特論（二）（3學分）— 博士班一年級必修", "en": "642 D0220 Selected Topics in Advanced Biotechnology (II) (3 credits) — 1st year PhD required"},
+    "phd_req_sec":      {"zh": "📌 本所必選課程（需修 D 字頭課程 6 學分，9 選 2）", "en": "📌 Required Electives (6 credits from D-prefix courses; choose 2 of 9)"},
+    "phd_req_note":     {"zh": "從以下9門課中選修至少6學分（9選2）", "en": "Select at least 6 credits (2 courses) from the following 9 courses"},
+    "c_epig":           {"zh": "642 D0020 後生遺傳學 Epigenetics（3學分）", "en": "642 D0020 Epigenetics (3 credits)"},
+    "c_stem":           {"zh": "642 D0030 幹細胞生物學 Stem Cell Biology（3學分）", "en": "642 D0030 Stem Cell Biology (3 credits)"},
+    "c_bioinf":         {"zh": "642 D0040 結構生物學與生物資訊特論 Structural Biology & Bioinformatics（3學分）", "en": "642 D0040 Structural Biology & Bioinformatics (3 credits)"},
+    "c_antibody":       {"zh": "642 D0050 免疫技術—抗體工具 Immunological Techniques: Antibody tools（3學分）", "en": "642 D0050 Immunological Techniques: Antibody tools (3 credits)"},
+    "c_antibody_warn":  {"zh": "⚠️ 此課程有特定修課規定（106學年起增設7選2選項），請洽系所辦公室確認。",
+                         "en": "⚠️ Special enrollment rules apply (additional 7-of-2 selection from AY106). Please confirm with the department office."},
+    "c_transgenic":     {"zh": "642 D0060 動物生因轉殖與複製技術 Transgenic and Cloning Technology in Animal（3學分）", "en": "642 D0060 Transgenic and Cloning Technology in Animal (3 credits)"},
+    "c_plant":          {"zh": "642 D0070 植物生物技術特論 Special Topics in Plant Biotechnology（3學分）", "en": "642 D0070 Special Topics in Plant Biotechnology (3 credits)"},
+    "c_micro":          {"zh": "642 D0080 微生物學特論 Special Topics in Microbiology（3學分）", "en": "642 D0080 Special Topics in Microbiology (3 credits)"},
+    "c_srna":           {"zh": "642 D0180 小分子核酸與基因沉默機制 Advanced small RNA and Mechanism of Gene Silencing（3學分）", "en": "642 D0180 Advanced small RNA and Mechanism of Gene Silencing (3 credits)"},
+    "c_srna_warn":      {"zh": "⚠️ 此課程自109學年度起列為必修（9選2改為8選2），適用109學年度起在學學生。",
+                         "en": "⚠️ This course has been mandatory since AY109 (selection changed from 9-of-2 to 8-of-2). Applies to students enrolled from AY109."},
+    "c_omics":          {"zh": "642 D0270 體學 Omics in Biotechnology（3學分）", "en": "642 D0270 Omics in Biotechnology (3 credits)"},
+    "phd_elective_label":{"zh": "已修選修學分數（本所或外系所 D、M 或 U 字頭課程）", "en": "Completed elective credits (D/M/U prefix courses from this or other departments)"},
+    "phd_elective_note": {"zh": "建議以資格考核筆試為修課考量", "en": "Course selection is recommended to align with the PhD qualifying examination scope"},
+    "qual_exam":        {"zh": "已通過博士資格考（筆試及口試）", "en": "PhD Qualifying Examination passed (written and oral)"},
+    "public_talk":      {"zh": "已舉辦公開演講", "en": "Public seminar/lecture completed"},
+    "pub_sec":          {"zh": "📄 論文發表要求", "en": "📄 Publication Requirements"},
+    "pub_route":        {"zh": "論文發表路線", "en": "Publication Route"},
+    "pub_general":      {"zh": "一般路線：已發表或接受≥2篇 SCI/SSCI 期刊論文", "en": "General Route: ≥2 published/accepted SCI/SSCI journal papers"},
+    "pub_if":           {"zh": "代表作路線：代表作 IF≥5，可以1篇申請（得為共同第一作者）", "en": "Representative Work Route: IF ≥ 5, eligible to apply with 1 paper (co-first author accepted)"},
+    "pub_none":         {"zh": "尚未達到發表要求", "en": "Publication requirements not yet met"},
+    "qualified_msg":    {"zh": "🎉 恭喜！您目前的資格符合本所規定。", "en": "🎉 Congratulations! You currently meet all departmental requirements."},
+    "not_qualified":    {"zh": "⚠️ 尚有條件未達標準：", "en": "⚠️ The following requirements have not been met:"},
+    "gaps_title":       {"zh": "欠缺條件摘要", "en": "Outstanding Requirements"},
+    "notes_title":      {"zh": "注意事項", "en": "Notes"},
+    # PDF
+    "pdf_title":        {"zh": "畢業資格自我檢核報告", "en": "Graduation Qualification Self-Check Report"},
+    "pdf_sid":          {"zh": "學號", "en": "Student ID"},
+    "pdf_query":        {"zh": "查詢項目", "en": "Query Type"},
+    "pdf_date":         {"zh": "產生日期", "en": "Date Generated"},
+    "pdf_result":       {"zh": "檢核結果", "en": "Check Result"},
+    "pdf_pass":         {"zh": "✓ 符合資格", "en": "✓ Requirements Met"},
+    "pdf_fail":         {"zh": "✗ 尚有條件未達標", "en": "✗ Requirements Not Yet Met"},
+    "pdf_credits":      {"zh": "一、學分檢核明細", "en": "I. Credit Check Details"},
+    "pdf_english":      {"zh": "二、英文能力", "en": "II. English Proficiency"},
+    "pdf_gaps":         {"zh": "三、欠缺條件摘要", "en": "III. Outstanding Requirements"},
+    "pdf_notes":        {"zh": "四、注意事項", "en": "IV. Notes"},
+    "pdf_no_gaps":      {"zh": "無欠缺條件，符合申請資格。", "en": "All requirements met. Eligible to apply."},
+    "pdf_item":         {"zh": "項目", "en": "Item"},
+    "pdf_required":     {"zh": "規定", "en": "Required"},
+    "pdf_completed":    {"zh": "已修", "en": "Completed"},
+    "pdf_status":       {"zh": "狀態", "en": "Status"},
+    "eng_pass_label":   {"zh": "✓ 已達標", "en": "✓ Met"},
+    "eng_fail_label":   {"zh": "✗ 未達標", "en": "✗ Not Met"},
+}
+
+def zh(key):
+    return T[key]["zh"]
+
+def en(key):
+    return T[key]["en"]
+
+def bi(key, sep="\n"):
+    return f"{T[key]['zh']}{sep}{T[key]['en']}"
+
+def gap(zh_msg, en_msg):
+    return {"zh": zh_msg, "en": en_msg}
+
+def note(zh_msg, en_msg):
+    return {"zh": zh_msg, "en": en_msg}
